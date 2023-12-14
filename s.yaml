@@ -47,6 +47,10 @@ resources:
       region: ${vars.region}
       domainName: auto
       protocol: HTTP
+      function:
+        environmentVariables:
+          OSS_ACCESS_KEY_ID: ${env(OSS_ACCESS_KEY_ID)}
+          OSS_ACCESS_KEY_SECRET: ${env(OSS_ACCESS_KEY_SECRET)}
       routeConfig:
         routes:
           - path: /*
