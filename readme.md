@@ -12,11 +12,11 @@
 }
 ```
 
-服务端会返回生成的 UML 图，格式为 SVG
+服务端会返回生成的 UML 图的 URL：
 
 ```json
 {
-  "image": "<?xml version=\"1.0\" encoding=\"us-ascii\" standalone=\"no\"?><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" ..."
+  "url": "https://plantuml-plugin-image.oss-cn-hangzhou.aliyuncs.com/cd34de7eaf8d88f72b51756e59c90dc3.svg"
 }
 ```
 

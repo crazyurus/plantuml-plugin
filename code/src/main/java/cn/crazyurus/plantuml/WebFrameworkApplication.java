@@ -18,7 +18,6 @@ import net.sourceforge.plantuml.FileFormatOption;
 @SpringBootApplication
 @RestController
 public class WebFrameworkApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(WebFrameworkApplication.class, args);
     }
@@ -33,10 +32,8 @@ public class WebFrameworkApplication {
 
             reader.outputImage(os, new FileFormatOption(FileFormat.SVG));
 
-            result.image = os.toString();
-            result.url = Utilities.UploadFile(result.image);
+            result.url = Utilities.UploadFile(os.toString());
         } catch (Exception e) {
-            result.image = "";
             result.url = "";
         }
 
