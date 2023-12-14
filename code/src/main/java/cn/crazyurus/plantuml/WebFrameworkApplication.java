@@ -25,8 +25,8 @@ public class WebFrameworkApplication {
     }
 
     @RequestMapping(value = "/api/generate", method = RequestMethod.POST)
-    public ResponseEntity<String> listHeaders(@RequestBody Parameter parameter) {
-        String result;
+    public ResponseEntity<Result> listHeaders(@RequestBody Parameter parameter) {
+        String image;
 
         try {
             ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -34,11 +34,13 @@ public class WebFrameworkApplication {
 
             reader.outputImage(os, new FileFormatOption(FileFormat.SVG));
 
-            result = os.toString();
+            image = os.toString();
         } catch (IOException e) {
-            result = "";
+            image = "";
         }
 
-        return new ResponseEntity<>(String.format("{\"image\": \"%s\"}", result) , HttpStatus.OK);
+        Result result = new Result(image);
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
