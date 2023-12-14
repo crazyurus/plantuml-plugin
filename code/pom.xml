@@ -8,11 +8,11 @@
 		<version>2.1.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>webframework</artifactId>
+	<groupId>cn.crazyurus</groupId>
+	<artifactId>plantuml-plugin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>webframework</name>
-	<description>Demo project for Spring Boot</description>
+	<name>PlantUML Plugin</name>
+	<description>PlantUML Plugin</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -36,10 +36,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.plantuml</groupId>
+			<artifactId>plantuml</artifactId>
+			<version>1.2023.13</version>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>${project.name}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
