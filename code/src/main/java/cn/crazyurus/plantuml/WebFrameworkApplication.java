@@ -1,7 +1,6 @@
 package cn.crazyurus.plantuml;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +25,7 @@ public class WebFrameworkApplication {
 
     @RequestMapping(value = "/api/generate", method = RequestMethod.POST)
     public ResponseEntity<Result> listHeaders(@RequestBody Parameter parameter) {
-        String image;
+        Result result = new Result();
 
         try {
             ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -34,12 +33,12 @@ public class WebFrameworkApplication {
 
             reader.outputImage(os, new FileFormatOption(FileFormat.SVG));
 
-            image = os.toString();
-        } catch (IOException e) {
-            image = "";
+            result.image = os.toString();
+            result.url = Utilities.UploadFile(result.image);
+        } catch (Exception e) {
+            result.image = "";
+            result.url = "";
         }
-
-        Result result = new Result(image);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
