@@ -1,6 +1,7 @@
 package cn.crazyurus.plantuml;
 
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,17 +24,18 @@ public class WebFrameworkApplication {
     }
 
     @RequestMapping(value = "/api/generate", method = RequestMethod.POST)
-    public ResponseEntity<Result> listHeaders(@RequestBody Parameter parameter) {
+    public ResponseEntity<Result> generate(@RequestBody Parameter parameter) {
         Result result = new Result();
 
         try {
             ByteArrayOutputStream os = new ByteArrayOutputStream();
-            SourceStringReader reader = new SourceStringReader("@startuml\n" + parameter.content + "\n@enduml");
+            SourceStringReader reader = new SourceStringReader("@startuml\n" + parameter.content + "\n@enduml", StandardCharsets.UTF_8.name());
 
-            reader.outputImage(os, new FileFormatOption(FileFormat.SVG));
+            reader.outputImage(os, new FileFormatOption(FileFormat.SVG, true));
 
             result.url = Utilities.UploadFile(os.toString());
-        } catch (Exception e) {
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
             result.url = "";
         }
 
