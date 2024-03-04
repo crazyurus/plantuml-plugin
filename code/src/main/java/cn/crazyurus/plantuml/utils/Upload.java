@@ -1,4 +1,4 @@
-package cn.crazyurus.plantuml;
+package cn.crazyurus.plantuml.utils;
 
 import org.springframework.util.DigestUtils;
 import com.aliyun.oss.OSS;
@@ -9,7 +9,7 @@ import com.aliyuncs.exceptions.ClientException;
 
 import java.io.ByteArrayInputStream;
 
-public class Utilities {
+public class Upload {
     private static String getObjectName(String content) {
         return DigestUtils.md5DigestAsHex(content.getBytes()) + ".svg";
     }

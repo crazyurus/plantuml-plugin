@@ -1,4 +1,4 @@
-package cn.crazyurus.plantuml;
+package cn.crazyurus.plantuml.pojo;
 
 public class Parameter {
    public String content;
